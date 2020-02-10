@@ -6,4 +6,4 @@ RUN wget -q -O /etc/apt/sources.list.d/mopidy.list https://apt.mopidy.com/buster
 RUN apt update && apt-get -y install mopidy
 RUN wget https://github.com/badaix/snapcast/releases/download/v0.18.1/snapclient_0.18.1-1_amd64.deb && wget https://github.com/badaix/snapcast/releases/download/v0.18.1/snapserver_0.18.1-1_amd64.deb && dpkg -i snapclient_0.18.1-1_amd64.deb || : && dpkg -i snapserver_0.18.1-1_amd64.deb || : && apt-get -yf install && dpkg -i snapclient_0.18.1-1_amd64.deb && dpkg -i snapserver_0.18.1-1_amd64.deb
 RUN git clone https://github.com/aawsome/mopidy-snapcast.git && cd mopidy-snapcast && pip install .
-CMD mopidy -v & snapserver && fg
+CMD rm ./initialize.sh | : && wget https://raw.githubusercontent.com/SiwatINC/Mopidy/master/initialize.sh && chmod +x ./initialize.sh && ./initialize.sh
