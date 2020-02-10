@@ -7,8 +7,8 @@ if [ -z "$(ls -A /config)" ]; then
    exit 0
 else
    echo "Already Initiated, Starting Mopidy and SnapServer Daemon"
-   apt-get install -y $apt-packages || :
-   pip install $python-packages || :
+   apt-get install -y $aptpackages || :
+   pip install $pythonpackages || :
    mopidy -v --config /config/mopidy.conf & snapserver --config /config/snapcast.conf
    exit 0
 fi
